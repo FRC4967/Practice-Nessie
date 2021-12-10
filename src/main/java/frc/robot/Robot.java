@@ -92,10 +92,21 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     controller.periodic();
-    System.out.println(controller.getstrafe());
 
     if (controller.getstrafe()){
       driveTrain.strafe();
+      if(controller.getstrafeleft()){
+        driveTrain.strafeleft();
+        System.out.println("left");
+      }
+      else if(controller.getstraferight()){
+        driveTrain.straferight();
+        System.out.println("right");
+      }
+      else{
+        driveTrain.stopstrafe();
+        System.out.println("no");
+      }
     }
     else{
       driveTrain.destrafe();
